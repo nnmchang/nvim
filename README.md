@@ -1,34 +1,61 @@
-# AstroNvim Template
+# nvim config
 
 **NOTE:** This is for AstroNvim v4+
 
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
-
 ## 🛠️ Installation
 
-#### Make a backup of your current nvim and shared folder
+Clone the repository
 
 ```shell
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
+git clone https://github.com/nnmchang/nvim ~/.config/nvim
 ```
 
-#### Create a new user repository from this template
+## ⌨️ Mappings
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
+default mappings [here](https://raw.githubusercontent.com/AstroNvim/docs/main/src/content/docs/mappings.mdx)
 
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
+### additional plugin mappings
 
-#### Clone the repository
+- dial.nvim
 
-```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
-```
+| Mapping | Action    |
+| ------- | --------- |
+| `<C-a>` | increment |
+| `<C-x>` | decrement |
 
-#### Start Neovim
+- vim-move
 
-```shell
-nvim
-```
+| Mapping | Action                           |
+| ------- | -------------------------------- |
+| `<A-h>` | Move current line/selectio left  |
+| `<A-j>` | Move current line/selectio down  |
+| `<A-k>` | Move current line/selectio up    |
+| `<A-l>` | Move current line/selectio right |
+
+- flash.nvim
+
+| Mapping | Action     |
+| ------- | ---------- |
+| `s`     | jump       |
+| `S`     | treesitter |
+
+- goto-preview.nvim
+
+| Mapping | Action                  |
+| ------- | ----------------------- |
+| `gp`    | goto preview definition |
+| `gP`    | close all preview       |
+
+- (python) venv-selector
+
+| Mapping     | Action             |
+| ----------- | ------------------ |
+| `<Space>lv` | open venv selector |
+
+##  Commands
+
+- glow.nvim
+
+| Command | Action          |
+| ------- | --------------- |
+| `Glow`  | open glow popup |
