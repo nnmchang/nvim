@@ -24,9 +24,12 @@ return {
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.svelte" },
+  { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
+  { import = "astrocommunity.terminal-integration.flatten-nvim" },
   -- import/override with your plugins folder
 }

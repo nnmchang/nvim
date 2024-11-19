@@ -39,3 +39,4 @@ end
 
 require "lazy_setup"
 require "polish"
+vim.opt.fillchars:append { diff = "╱" }
