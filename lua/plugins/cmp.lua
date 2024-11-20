@@ -34,7 +34,13 @@ local lspkind_comparator = function(conf)
 end
 
 -- standard label sort
-local label_comparator = function(entry1, entry2) return entry1.completion_item.label < entry2.completion_item.label end
+local label_comparator = function(entry1, entry2)
+  -- skkeleton同士の比較は行わない
+  local is_skkeleton_1 = entry1.source.name == "skkeleton"
+  local is_skkeleton_2 = entry2.source.name == "skkeleton"
+  if is_skkeleton_1 and is_skkeleton_2 then return nil end
+  return entry1.completion_item.label < entry2.completion_item.label
+end
 
 return { -- override nvim-cmp plugin
   "hrsh7th/nvim-cmp",
