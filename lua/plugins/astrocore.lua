@@ -3,6 +3,26 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+-- ; と , で直前の移動を繰り返す(nvim-treesitter-textobjects の repeatable_move)
+-- f/F/t/T も repeatable_move 経由にして、; と , で引き続き繰り返せるようにする。
+-- indent-tools の ]i / [i もこの仕組みで繰り返せる(plugins/indent-tools.lua を参照)
+local function repeat_move(name, expr)
+  return {
+    function() return require("nvim-treesitter-textobjects.repeatable_move")[name]() end,
+    expr = expr,
+    desc = "Repeatable move: " .. name,
+  }
+end
+
+local repeat_move_mappings = {
+  [";"] = repeat_move "repeat_last_move_next",
+  [","] = repeat_move "repeat_last_move_previous",
+  f = repeat_move("builtin_f_expr", true),
+  F = repeat_move("builtin_F_expr", true),
+  t = repeat_move("builtin_t_expr", true),
+  T = repeat_move("builtin_T_expr", true),
+}
+
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -13,7 +33,7 @@ return {
       large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -40,8 +60,10 @@ return {
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
+      x = vim.deepcopy(repeat_move_mappings),
+      o = vim.deepcopy(repeat_move_mappings),
       -- first key is the mode
-      n = {
+      n = vim.tbl_extend("force", vim.deepcopy(repeat_move_mappings), {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `H` and `L`
@@ -62,7 +84,7 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-      },
+      }),
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,

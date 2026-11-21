@@ -38,6 +38,7 @@ local label_comparator = function(entry1, entry2) return entry1.completion_item.
 
 return { -- override nvim-cmp plugin
   "hrsh7th/nvim-cmp",
+  dependencies = { "onsails/lspkind.nvim" },
   -- override the options table that is used in the `require("cmp").setup()` call
   opts = function(_, opts)
     opts.formatting = {

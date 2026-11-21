@@ -5,7 +5,9 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.ai.sidekick-nvim" },
   { import = "astrocommunity.color.transparent-nvim" },
+  { import = "astrocommunity.completion.nvim-cmp" }, -- keep nvim-cmp (custom sorting in plugins/cmp.lua) instead of blink.cmp
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.editing-support.dial-nvim" },
