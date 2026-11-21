@@ -2,7 +2,7 @@
 vim.opt.fileencodings = "utf-8,cp932"
 
 -- enable python3
-vim.g.python3_host_prog = vim.fn.executable "python3" and "python3" or vim.fn.executable "python" and "python" or ""
+vim.g.python3_host_prog = vim.fn.executable "python3" == 1 and "python3" or vim.fn.executable "python" == 1 and "python" or ""
 
 -- enable powershell
 if vim.fn.has "win32" == 1 then

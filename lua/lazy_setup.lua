@@ -17,6 +17,8 @@ require("lazy").setup({
   -- Configure any other `lazy.nvim` configuration options here
   install = { colorscheme = { "astrotheme", "habamax" } },
   ui = { backdrop = 100 },
+  -- luarocks が必要なプラグインは無いので無効化(checkhealth の hererocks エラー対策)
+  rocks = { enabled = false },
   performance = {
     rtp = {
       -- disable some rtp plugins, add more to your liking
