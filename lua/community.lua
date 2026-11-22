@@ -23,7 +23,12 @@ return {
   { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
-  { import = "astrocommunity.pack.python" },
+  -- pack.python をディレクトリごと import すると、lazy.nvim がサブモジュール
+  -- (ruff・ty・pyrefly)まで読み込んでしまうため、使うものだけを明示的に指定する
+  { import = "astrocommunity.pack.python.base" },
+  { import = "astrocommunity.pack.python.basedpyright" },
+  { import = "astrocommunity.pack.python.black" },
+  { import = "astrocommunity.pack.python.isort" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.svelte" },
